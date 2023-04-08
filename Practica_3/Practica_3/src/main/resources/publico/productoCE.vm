@@ -1,0 +1,46 @@
+#parse("publico/header.vm")
+
+<div class="container-fluid">
+    <div class="card text-center mb-3">
+        <div class="card-body">
+            <h3>Crear o Editar Producto</h3>
+        </div>
+    </div>
+    <div class="mx-auto" style="width: 80%">
+
+        <div class="container pl-6 pr-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Crear producto</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="$accion" >
+                    <div class="form-group">
+
+                        #if($producto == $null)
+                            <label for="nombre">Nombre: </label>
+                            <input type="text" class="form-control" id="nombre" name="nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="precio">Precio: </label>
+                            <input type="number" class="form-control" id="precio" name="precio" min="1">
+                        #else
+                            <label for="nombre">Nombre: </label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" value="$producto.getNombre()">
+                        </div>
+                        <div class="form-group">
+                            <label for="precio">Precio: </label>
+                            <input type="number" class="form-control" id="precio" name="precio" min="1" value="$producto.precio">
+                        #end
+                    </div>
+
+
+                        <input class="btn btn-primary" type="submit" value="Aceptar">
+                        <button type="button" class="btn btn-secondary" onclick="location.href='/productos'">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+#include("publico/footer.vm")
