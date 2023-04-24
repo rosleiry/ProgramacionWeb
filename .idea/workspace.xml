@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b450342d-da14-41ec-83fa-5159ba638f7f" name="Changes" comment="serverSolucionado">
+    <list default="true" id="b450342d-da14-41ec-83fa-5159ba638f7f" name="Changes" comment="dependencia">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ClientesAPI/gRPC/Cliente.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ClientesAPI/gRPC/Cliente.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +155,7 @@
       <workItem from="1682204625102" duration="2850000" />
       <workItem from="1682230831013" duration="7229000" />
       <workItem from="1682239255827" duration="3252000" />
-      <workItem from="1682257610900" duration="52979000" />
+      <workItem from="1682257610900" duration="54872000" />
     </task>
     <task id="LOCAL-00001" summary="encapsulation">
       <created>1682283741374</created>
@@ -228,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682371524238</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="dependencia">
+      <created>1682373251796</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1682373251796</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +274,7 @@
     <MESSAGE value="errores solucionados en apiControladora" />
     <MESSAGE value="plantillas" />
     <MESSAGE value="serverSolucionado" />
-    <option name="LAST_COMMIT_MESSAGE" value="serverSolucionado" />
+    <MESSAGE value="dependencia" />
+    <option name="LAST_COMMIT_MESSAGE" value="dependencia" />
   </component>
 </project>

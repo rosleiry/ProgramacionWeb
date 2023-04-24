@@ -29,7 +29,7 @@ def autentificar(stub):
 
         us = input('Ingrese su nombre de usuario: ')
         pas = input('Ingrese su contraseña: ')
-        res = stub.autentificacion(EnlaceRn_pb2.usuarioRequest(usuario = us,password = pas))
+        res = stub.autentificacion(EnlaceRn_pb2.usuarioRequest(usuario = us,contrasea = pas))
 
         if(res.ok):
             user = us
@@ -77,9 +77,9 @@ def acortar(stub):
         print('\n\n===================Resultado===================')
         print("ID: " + str(res.enlaceId))
         print('URL Original: '+  res.url)
-        print('URL Acortada: ' + res.acortado)
+        print('Enlace Acortado: ' + res.acortado)
         print('Fecha de creacion: '+ res.fecha)
-        print('Foto en Base64: '+ res.foto[0:20]+'...')
+        print('Imagen en Base64: '+ res.foto[0:20]+'...')
         print('===================================================\n\n')
 
     if user == 'anonimo':
@@ -119,7 +119,7 @@ def mostrar(stub):
         if res.veces > 0:
             print('|     IP        |    Navegador   y   Sistema  |   Fecha')
             for cliente in clientes.clientes:
-                print('  '+cliente.ip + '  |     ' + cliente.navegador+ '   -   '+cliente.sistema + '     |   ' + cliente.fecha)
+                print('  '+cliente.ip + '  |     ' + cliente.navegador+ '   -   '+cliente.sistemaOperativo + '     |   ' + cliente.fecha)
         else:
             print('No hay estadiscticas disponibles!')
 consultas(stub)
