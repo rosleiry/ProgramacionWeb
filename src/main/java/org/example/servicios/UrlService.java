@@ -1,14 +1,19 @@
 package org.example.servicios;
 
+import kong.unirest.Unirest;
 import org.example.encapsulaciones.Url;
 import org.example.encapsulaciones.Usuario;
 import org.example.util.Main;
-import javax.management.Query;
+
+import javax.imageio.ImageIO;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Base64;
 import java.util.List;
 import java.util.Set;
 
