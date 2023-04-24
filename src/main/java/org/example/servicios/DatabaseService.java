@@ -17,7 +17,7 @@ public class DatabaseService<T> { //<T> clase generica y puede trabajar con cual
     private static EntityManagerFactory emf;
     private Class<T> claseGenerica;
 
-    public DatabaseService(Class<Url> claseGenerica) {
+    public DatabaseService(Class<T> claseGenerica) {
         if(emf == null) {
             if(Main.getModoConexion().equalsIgnoreCase("Heroku")){
                 emf = getConfiguracionBaseDatosHeroku();
@@ -25,7 +25,7 @@ public class DatabaseService<T> { //<T> clase generica y puede trabajar con cual
                 emf = Persistence.createEntityManagerFactory("MiUnidadPersistencia");
             }
         }
-        this.claseGenerica = (Class<T>) claseGenerica;
+        this.claseGenerica = claseGenerica;
 
     }
 

@@ -11,6 +11,8 @@ import java.util.Set;
         @NamedQuery(name = "Usuario.findAllByUsuario", query = "select u from Usuario u where u.usuario = :user"),
         @NamedQuery(name = "Usuario.autenticarUsuario", query = "select u from Usuario u where u.usuario = :user and u.contrasea = :pass")})
 public class Usuario implements Serializable {
+
+
     public enum TipoRole{
         ROLE_USUARIO, ROLE_ADMIN
     }
@@ -27,7 +29,7 @@ public class Usuario implements Serializable {
     private TipoRole rol;
 
     @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
-    private Set<Url> enlaces = new HashSet<Url>();
+    private Set<Url> misEnlaces = new HashSet<Url>();
 
     public int getIdUsuario() {
         return idUsuario;
@@ -69,11 +71,11 @@ public class Usuario implements Serializable {
         this.rol = rol;
     }
 
-    public Set<Url> getEnlaces() {
-        return enlaces;
+    public Set<Url> getMisEnlaces() {
+        return misEnlaces;
     }
 
-    public void setEnlaces(Set<Url> enlaces) {
-        this.enlaces = enlaces;
+    public void setMisEnlaces(Set<Url> misEnlaces) {
+        this.misEnlaces = misEnlaces;
     }
 }

@@ -1,13 +1,26 @@
 package org.example.servicios;
 
+import org.example.encapsulaciones.LoginResponse;
+
 import io.javalin.Javalin;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SignatureException;
 import org.example.controladoras.RestControladora;
 import org.example.encapsulaciones.Usuario;
+import org.example.exceptions.noExistingToken;
+import org.example.exceptions.noExistingUser;
 
+import javax.crypto.SecretKey;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.Date;
 import java.util.Set;
 
-import static io.javalin.apibuilder.ApiBuilder.before;
-import static io.javalin.apibuilder.ApiBuilder.path;
+import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class RestService {
     private Javalin app;
@@ -101,7 +114,7 @@ public class RestService {
                     //Verificando si existe el header de autorizacion.
                     String headerAutentificacion = ctx.header(header);
                     if(headerAutentificacion ==null || !headerAutentificacion.startsWith(prefijo)){
-                        throw new noExisteToken("No tiene permiso para acceder al recurso, no enviando header de autorizacion");
+                        throw new noExistingToken("No tiene permiso para acceder al recurso, no enviando header de autorizacion");
                     }
                     //recuperando el token y validando
                     String tramaJwt = headerAutentificacion.replace(prefijo, "");
@@ -112,7 +125,7 @@ public class RestService {
                         //mostrando la información para demostración.
                         System.out.println("Mostrando el JWT recibido: " + claims.toString());
                     }catch (ExpiredJwtException | MalformedJwtException | SignatureException e){ //Excepciones comunes
-                        throw new noExisteToken(e.getMessage());
+                        throw new noExistingToken(e.getMessage());
                     }
 
                     //En este punto puedo realizar validaciones en función a los permisos del usuario.
@@ -126,7 +139,7 @@ public class RestService {
                 //Listado de las URL publicadas por un usuario incluyendo las estadísticas
                 //asociadas.
                 get("/ListarUrl/:usuario", ctx -> {
-                    ctx.json(RestControlador.getInstancia().crearArreglo(ctx.pathParam("usuario",String.class).get()));
+                    ctx.json(RestControladora.getInstancia().crearArreglo(ctx.pathParam("usuario",String.class).get()));
                 });
 
                 //Creación de registro de URL para un usuario retornando la estructura básica
@@ -137,7 +150,7 @@ public class RestService {
                 post("/registrarURL", ctx -> {
                     String usuario = ctx.queryParam("usuario");
                     String url = ctx.queryParam("url");
-                    ctx.json(RestControlador.getInstancia().registrarEnlace(url,usuario));
+                    ctx.json(RestControladora.getInstancia().registrarEnlace(url,usuario));
                 });
             });
 
@@ -145,12 +158,12 @@ public class RestService {
 
 
 
-        app.exception(noExisteToken.class, (exception, ctx) -> {
+        app.exception(noExistingToken.class, (exception, ctx) -> {
             ctx.status(FORBIDDEN);
             ctx.json(""+exception.getLocalizedMessage());
         });
 
-        app.exception(noExisteUsuario.class, (exception, ctx) -> {
+        app.exception(noExistingUser.class, (exception, ctx) -> {
             ctx.status(404);
             ctx.json(""+exception.getLocalizedMessage());
         });
@@ -167,7 +180,8 @@ public class RestService {
         System.out.println("La fecha actual: "+localDateTime.toString());
 
         //
-        Date fechaExpiracion = Date.from(localDateTime.toInstant(ZoneOffset.ofHours(-4)));
+        Date fechaExpiracion;
+        fechaExpiracion = Date.from(localDateTime.toInstant(ZoneOffset.ofHours(-4)));
         // creando la trama.
         String jwt = Jwts.builder()
                 .setIssuer("PUCMM-ProgramacionWeb")

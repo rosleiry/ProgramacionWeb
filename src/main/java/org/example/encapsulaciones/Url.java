@@ -10,7 +10,7 @@ public class Url implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUrl;
-    private String enlace;
+    private String URL;
     private Date fecha = new Date();
     private String enlaceAcortado;
     private int cantVecesAccedidas = 0;
@@ -32,12 +32,12 @@ public class Url implements Serializable {
         this.idUrl = idUrl;
     }
 
-    public String getEnlace() {
-        return enlace;
+    public String getURL() {
+        return URL;
     }
 
-    public void setEnlace(String enlace) {
-        this.enlace = enlace;
+    public void setURL(String URL) {
+        this.URL = URL;
     }
 
     public Date getFecha() {

@@ -7,6 +7,7 @@ import org.example.util.Main;
 
 import javax.imageio.ImageIO;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -36,7 +37,7 @@ public class UrlService extends DatabaseService<Url>{
         EntityManager em = getEntityManager();
         boolean res = false;
         try {
-            TypedQuery<Url> query = em.createQuery("select e from Url e where e.enlaceAcortado like :cod", Url.class);
+            Query query = em.createQuery("select e from Url e where e.enlaceAcortado like :cod", Url.class);
             query.setParameter("cod",cod+"%");
             res = query.getResultList().isEmpty();
         } catch (Exception e) {
@@ -54,7 +55,7 @@ public class UrlService extends DatabaseService<Url>{
 
     public List<Url> consultaNativa(){
         EntityManager em = getEntityManager();
-        javax.persistence.Query query = em.createNativeQuery("select * from Url ", Url.class);
+        Query query = em.createNativeQuery("select * from Url ", Url.class);
 
         List<Url> lista = query.getResultList();
         return lista;
@@ -78,7 +79,7 @@ public class UrlService extends DatabaseService<Url>{
 
     public Url findEnlace(String path) {
         EntityManager em = getEntityManager();
-        TypedQuery<Url> query = em.createQuery("select e from Url e where e.enlaceAcortado like :cod" , Url.class);
+        Query query = em.createQuery("select e from Url e where e.enlaceAcortado like :cod" , Url.class);
         query.setParameter("cod","'%"+path+"%'");
         List<Url> enlaces  = query.getResultList();
         return enlaces.get(0);
@@ -116,36 +117,36 @@ public class UrlService extends DatabaseService<Url>{
 
     public Url[] getEnlaces(String user){
         Usuario usuario = UsuarioService.getInstancia().findAllByUsuario(user).get(0);
-        Url[] enlaces = new Url[][usuario.getMisEnlaces().size()];
+        Url[] enlaces = new Url[usuario.getMisEnlaces().size()];
         usuario.getMisEnlaces().toArray(enlaces);
         System.out.println(enlaces[0].getURL());
         return enlaces;
     }
 
-    public Url registrarEnlace(String enlace,String usuario) throws IOException {
+    public Url registrarEnlace(String url,String usuario) throws IOException {
         System.out.println(usuario);
-        HttpURLConnection connection = (HttpURLConnection) new URL(enlace).openConnection();
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
         connection.setRequestMethod("HEAD");
         int responseCode = connection.getResponseCode();
         System.out.println(responseCode);
         connection.disconnect();
         if (200 <= responseCode && responseCode <= 399 || responseCode == 403) {
-            Url url = new Url();
+            Url enlace = new Url();
             if(!usuario.equalsIgnoreCase("anonimo")) {
                 Usuario user = UsuarioService.getInstancia().findAllByUsuario(usuario).get(0);
-                url.setUsuario(user);
+                enlace.setUsuario(user);
             }
 
-            String preview = UrlService.getInstancia().getPreview(enlace);
+            String preview = UrlService.getInstancia().getPreview(url);
             String acortado = UrlService.getInstancia().getAcortado();
 
-            url.setImagen64(preview);
-            url.setEnlace(enlace);
-            url.setEnlaceAcortado(acortado);
+            enlace.setImagen64(preview);
+            enlace.setURL(url);
+            enlace.setEnlaceAcortado(acortado);
 
-            url = UrlService.getInstancia().crear(url);
+            enlace = UrlService.getInstancia().crear(enlace);
             System.out.println(enlace.getIdUrl());
-            return url;
+            return enlace;
 
         }
         return null;
