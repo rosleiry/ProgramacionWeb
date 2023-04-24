@@ -1,5 +1,6 @@
 package org.example.grpc;
 
+import io.grpc.BindableService;
 import org.example.servicios.GrpcService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -11,7 +12,7 @@ public class GrpcServer {
     private Server server;
 
     public void start() throws IOException{
-        server = ServerBuilder.forPort(PORT).addService(new GrpcService()).build().start();
+        server = ServerBuilder.forPort(PORT).addService((BindableService) new GrpcService()).build().start();
     }
 
     public void blockunitlShutdown() throws InterruptedException{

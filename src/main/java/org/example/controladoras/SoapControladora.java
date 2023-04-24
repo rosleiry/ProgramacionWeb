@@ -1,10 +1,8 @@
 package org.example.controladoras;
 
 import io.javalin.Javalin;
-import jakarta.xml.ws.spi.http.HttpContext;
 import org.eclipse.jetty.http.spi.HttpSpiContextHandler;
 import org.eclipse.jetty.http.spi.JettyHttpContext;
-//import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandlerCollection;
 import org.eclipse.jetty.http.spi.JettyHttpServer;
@@ -22,7 +20,7 @@ public class SoapControladora {
     }
 
     public void aplicarRutas(){
-        Server server = app.server().server();
+        Server server = app.jettyServer().server();
         ContextHandlerCollection contextHandlerCollection = new ContextHandlerCollection();
         server.setHandler(contextHandlerCollection);
 

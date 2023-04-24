@@ -1,7 +1,9 @@
 package org.example.util;
 
 import io.javalin.Javalin;
+
 import io.javalin.rendering.JavalinRenderer;
+import io.javalin.rendering.template.JavalinVelocity;
 import org.example.controladoras.ApiControladora;
 import org.example.controladoras.SoapControladora;
 import org.example.encapsulaciones.Usuario;
@@ -9,6 +11,7 @@ import org.example.grpc.GrpcServer;
 import org.example.servicios.BootstrapServices;
 import org.example.servicios.RestService;
 import org.example.servicios.UsuarioService;
+
 
 import java.io.IOException;
 import java.util.Random;
@@ -37,14 +40,14 @@ public class Main {
 
         //Creando la instancia del servidor.
         Javalin app = Javalin.create(config ->{
-            config.enableCorsForAllOrigins();
+            config.notifyAll();
         });
         new SoapControladora(app).aplicarRutas();
         new RestService(app).aplicarRutas();
         app.start(getHerokuAssignedPort());
         //creando los endpoint de las rutas.
         new ApiControladora(app).aplicarRutas();
-        JavalinRenderer.register(JavalinVelocity.INSTANCE,".vm");
+        JavalinRenderer.register(new JavalinVelocity(),".vm");
 
         GrpcServer server = new GrpcServer();
         server.start();

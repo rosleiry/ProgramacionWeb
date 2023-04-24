@@ -3,11 +3,8 @@ package org.example.servicios;
 import org.example.controladoras.RestControladora;
 import org.example.encapsulaciones.LoginResponse;
 import org.example.encapsulaciones.Usuario;
-import org.example.servicios.UsuarioService;
-import org.example.servicios.UrlService;
 import org.example.exceptions.noExistingToken;
 import org.example.exceptions.noExistingUser;
-import org.example.exceptions.noExistingUrl;
 import io.javalin.Javalin;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -19,11 +16,8 @@ import io.jsonwebtoken.security.SignatureException;
 import javax.crypto.SecretKey;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.Optional;
 import java.util.Set;
-import java.util.logging.Handler;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 public class RestService {
@@ -101,9 +95,11 @@ public class RestService {
                     System.out.println("Analizando que exista el token");
 
                     //si es del tipo options lo dejo pasar.
-                    if(ctx.req.getMethod() == "OPTIONS"){
+                    if ("OPTIONS".equals(ctx.req().getMethod())) {
                         return;
                     }
+
+
 
                     //informacion para consultar en la trama.
                     String header = "Authorization";
@@ -143,7 +139,7 @@ public class RestService {
                 //Listado de las URL publicadas por un usuario incluyendo las estadísticas
                 //asociadas.
                 get("/ListarUrl/:usuario", ctx -> {
-                    ctx.json(RestControladora.getInstancia().crearArreglo(ctx.pathParam("usuario",String.class).get()));
+                    ctx.json(RestControladora.getInstancia().crearArreglo(ctx.pathParam("usuario")));
                 });
 
                 //Creación de registro de URL para un usuario retornando la estructura básica

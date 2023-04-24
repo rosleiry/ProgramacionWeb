@@ -8,7 +8,7 @@ plugins {
 
 group 'org.example'
 version '1.0-SNAPSHOT'
-mainClassName='org.example.Main'
+mainClassName='org.example.util.Main'
 
 repositories {
     mavenCentral()
@@ -31,7 +31,9 @@ dependencies {
     implementation 'org.hibernate:hibernate-entitymanager:5.6.15.Final'
 
     //Template
+    implementation 'io.javalin:javalin-rendering:5.3.2'
     implementation 'org.apache.velocity:velocity-engine-core:2.3'
+
 
     //Manejo de encriptación
     implementation 'org.jasypt:jasypt:1.9.3'

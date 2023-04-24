@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b450342d-da14-41ec-83fa-5159ba638f7f" name="Changes" comment="errores solucionados en apiControladora">
+    <list default="true" id="b450342d-da14-41ec-83fa-5159ba638f7f" name="Changes" comment="plantillas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controladoras/SoapControladora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controladoras/SoapControladora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/autentificacion.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/autentificacion.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/enlaces.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/enlaces.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/footer.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/footer.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/header.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/header.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/index.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/index.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/registro.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/registro.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/usuarios.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/usuarios.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/verEnlace.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/verEnlace.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/grpc/GrpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/grpc/GrpcServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/servicios/RestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/servicios/RestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +95,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Administrator/IdeaProjects/FinalAcortador/src/main/resources",
+    "last_opened_file_path": "C:/Users/Administrator/IdeaProjects/pruebafinal",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -164,7 +159,7 @@
       <workItem from="1682204625102" duration="2850000" />
       <workItem from="1682230831013" duration="7229000" />
       <workItem from="1682239255827" duration="3252000" />
-      <workItem from="1682257610900" duration="47615000" />
+      <workItem from="1682257610900" duration="51201000" />
     </task>
     <task id="LOCAL-00001" summary="encapsulation">
       <created>1682283741374</created>
@@ -222,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682361474791</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="plantillas">
+      <created>1682367775803</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1682367775803</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,6 +262,7 @@
     <MESSAGE value="grpc, rest y soap actualizados" />
     <MESSAGE value="conexion en main" />
     <MESSAGE value="errores solucionados en apiControladora" />
-    <option name="LAST_COMMIT_MESSAGE" value="errores solucionados en apiControladora" />
+    <MESSAGE value="plantillas" />
+    <option name="LAST_COMMIT_MESSAGE" value="plantillas" />
   </component>
 </project>
