@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b450342d-da14-41ec-83fa-5159ba638f7f" name="Changes" comment="plantillas">
+    <list default="true" id="b450342d-da14-41ec-83fa-5159ba638f7f" name="Changes" comment="serverSolucionado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controladoras/SoapControladora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controladoras/SoapControladora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/grpc/GrpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/grpc/GrpcServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/servicios/RestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/servicios/RestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -159,7 +156,7 @@
       <workItem from="1682204625102" duration="2850000" />
       <workItem from="1682230831013" duration="7229000" />
       <workItem from="1682239255827" duration="3252000" />
-      <workItem from="1682257610900" duration="51201000" />
+      <workItem from="1682257610900" duration="52979000" />
     </task>
     <task id="LOCAL-00001" summary="encapsulation">
       <created>1682283741374</created>
@@ -224,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682367775803</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="serverSolucionado">
+      <created>1682371524238</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1682371524238</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,6 +267,7 @@
     <MESSAGE value="conexion en main" />
     <MESSAGE value="errores solucionados en apiControladora" />
     <MESSAGE value="plantillas" />
-    <option name="LAST_COMMIT_MESSAGE" value="plantillas" />
+    <MESSAGE value="serverSolucionado" />
+    <option name="LAST_COMMIT_MESSAGE" value="serverSolucionado" />
   </component>
 </project>

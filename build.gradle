@@ -29,6 +29,10 @@ dependencies {
     //ORM
     implementation 'org.hibernate:hibernate-core:6.1.7.Final'
     implementation 'org.hibernate:hibernate-entitymanager:5.6.15.Final'
+        implementation 'org.hibernate:hibernate-core:5.5.7.Final'
+        implementation 'org.hibernate:hibernate-entitymanager:5.5.7.Final'
+        implementation 'org.hibernate:hibernate-validator:6.2.0.Final'
+
 
     //Template
     implementation 'io.javalin:javalin-rendering:5.3.2'

@@ -34,7 +34,6 @@ public class Main {
         //Iniciando la base de datos.
         if(modoConexion.isEmpty()) {
             BootstrapServices.getInstancia().init();
-
             EntrarDatos();
         }
 
