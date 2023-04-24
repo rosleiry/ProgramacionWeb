@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b450342d-da14-41ec-83fa-5159ba638f7f" name="Changes" comment="templates, api controladora y srvicios actualizados">
+    <list default="true" id="b450342d-da14-41ec-83fa-5159ba638f7f" name="Changes" comment="grpc, rest y soap actualizados">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controladoras/SoapControladora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controladoras/SoapControladora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/grpc/GrpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/grpc/GrpcServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/rest/ClienteRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/rest/ClienteRest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/servicios/GrpcService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/servicios/GrpcService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +155,7 @@
       <workItem from="1682204625102" duration="2850000" />
       <workItem from="1682230831013" duration="7229000" />
       <workItem from="1682239255827" duration="3252000" />
-      <workItem from="1682257610900" duration="34872000" />
+      <workItem from="1682257610900" duration="35760000" />
     </task>
     <task id="LOCAL-00001" summary="encapsulation">
       <created>1682283741374</created>
@@ -196,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682351141414</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="grpc, rest y soap actualizados">
+      <created>1682354987452</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1682354987452</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +234,7 @@
     <MESSAGE value="actualizacion servicios" />
     <MESSAGE value="actualizacion exceptions added" />
     <MESSAGE value="templates, api controladora y srvicios actualizados" />
-    <option name="LAST_COMMIT_MESSAGE" value="templates, api controladora y srvicios actualizados" />
+    <MESSAGE value="grpc, rest y soap actualizados" />
+    <option name="LAST_COMMIT_MESSAGE" value="grpc, rest y soap actualizados" />
   </component>
 </project>
