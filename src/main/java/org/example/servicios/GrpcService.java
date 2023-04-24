@@ -1,8 +1,14 @@
 package org.example.servicios;
 
+import org.example.encapsulaciones.Cliente;
+import org.example.encapsulaciones.Url;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class GrpcService {
 
-    private final EnlaceService enlaceService = EnlaceService.getInstancia();
+    private final UrlService urlService = UrlService.getInstancia();
     private final UsuarioService usuarioService = UsuarioService.getInstancia();
 
     public void autentificacion(EnlaceRnOuterClass.usuarioRequest request, StreamObserver<EnlaceRnOuterClass.usuarioResponse> responseObserver){
@@ -13,7 +19,7 @@ public class GrpcService {
     }
     public void registrarEnlace(EnlaceRnOuterClass.EnlaceRequest request, StreamObserver<EnlaceRnOuterClass.EnlaceResponse> responseObserver){
         try {
-            Enlace aux = enlaceService.registrarEnlace(request.getEnlace(),request.getUsuario());
+            Url aux = urlService.registrarEnlace(request.getUrl(),request.getUsuario());
             responseObserver.onNext(convertir(aux));
             responseObserver.onCompleted();
         } catch (IOException e) {
@@ -23,19 +29,19 @@ public class GrpcService {
     }
 
     public void getEnlace(EnlaceRnOuterClass.clientesRequest request, StreamObserver<EnlaceRnOuterClass.EnlaceResponse> responseObserver){
-        Enlace enlace = enlaceService.find(request.getIdEnlace());
+        Url enlace = urlService.find(request.getIdUrl());
         if (enlace != null){
             responseObserver.onNext(convertir(enlace));
             responseObserver.onCompleted();
         }else{
-            responseObserver.onError(new noExisteEnlace("No existe el enlace: " + request.getIdEnlace()));
+            responseObserver.onError(new noExisteEnlace("No existe el enlace: " + request.getIdUrl()));
 
         }
     }
     public void getEnlaces(EnlaceRnOuterClass.enlace request,StreamObserver<EnlaceRnOuterClass.ListaEnlace> responseObserver){
-        Enlace[] enlaces = enlaceService.getEnlaces(request.getUser());
+        Url[] enlaces = urlService.getEnlaces(request.getUser());
         List<EnlaceRnOuterClass.EnlaceResponse> enlaceResponses = new ArrayList<>();
-        for (Enlace e : enlaces){
+        for (Url e : enlaces){
             enlaceResponses.add(convertir(e));
         }
         EnlaceRnOuterClass.ListaEnlace build = EnlaceRnOuterClass.ListaEnlace.newBuilder().addAllElace(enlaceResponses).build();
@@ -59,18 +65,18 @@ public class GrpcService {
                 .setFecha(e.getFecha().toString())
                 .setIp(e.getIp())
                 .setNavegador(e.getNavegador())
-                .setSistema(e.getSistema())
+                .setSistema(e.getSistemaOperativo())
                 .build();
     }
 
-    private EnlaceRnOuterClass.EnlaceResponse convertir(Enlace aux) {
+    private EnlaceRnOuterClass.EnlaceResponse convertir(Url aux) {
         return EnlaceRnOuterClass.EnlaceResponse.newBuilder()
-                .setEnlaceId(aux.getIdEnlace())
+                .setEnlaceId(aux.getIdUrl())
                 .setUrl(aux.getURL())
                 .setFecha(aux.getFecha().toString())
-                .setAcortado(aux.getURLAcostarda())
-                .setVeces(aux.getVecesAccesidas())
-                .setFoto(aux.getFotoBase64())
+                .setAcortado(aux.getEnlaceAcortado())
+                .setVeces(aux.getCantVecesAccedidas())
+                .setFoto(aux.getImagen64())
                 .build();
     }
 

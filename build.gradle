@@ -52,6 +52,7 @@ dependencies {
     implementation "com.sun.xml.ws:jaxws-rt:3.0.2" //conjunto de APIs Java para desarrollar servicios web basados en XML
     implementation "com.sun.xml.ws:jaxws-ri:3.0.2"
     implementation "org.glassfish.jaxb:jaxb-runtime:3.0.2"
+    implementation 'javax.xml.ws:jaxws-api:2.3.1'
 
 
     //gRPc y Protobuf
