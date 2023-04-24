@@ -8,6 +8,7 @@ import org.example.servicios.ClienteService;
 import org.example.servicios.UrlService;
 import org.example.servicios.UsuarioService;
 
+
 import java.net.InetAddress;
 import java.util.*;
 
@@ -84,7 +85,8 @@ public class ApiControladora {
 
             //Redireccionar
             app.get("/re/:redirect",ctx -> {
-                int id = ctx.pathParam("redirect",Integer.class).get();
+                String redirectParam = ctx.pathParam("redirect");
+                int id = Integer.parseInt(redirectParam);
                 Url aux = urlService.find(id);
                 String detalles = getOS(ctx.userAgent().toLowerCase());
                 String nav = getNav(ctx.header("sec-ch-ua").toLowerCase());
@@ -106,7 +108,8 @@ public class ApiControladora {
             });
 
             app.get("/ver/:id", ctx -> {
-                int id = ctx.pathParam("id",Integer.class).get();
+                String redirectParam = ctx.pathParam("redirect");
+                int id = Integer.parseInt(redirectParam);
                 Url enlace = urlService.find(id);
 
                 Map<String,Object> map = new HashMap<>();
@@ -174,7 +177,8 @@ public class ApiControladora {
             //guardar editar usuario ROL ADMIN
             app.post("/ascender/:idUsuario", ctx -> {
                 //obtengo el usuario
-                Usuario tmp = usuarioService.find(ctx.pathParam("idUsuario", Integer.class).get());
+                //Usuario tmp = usuarioService.find(ctx.pathParam("idUsuario", Integer.class).get());
+                Usuario tmp = usuarioService.find(Integer.parseInt(ctx.pathParam("idUsuario")));
                 tmp.setRol(Usuario.TipoRole.ROLE_ADMIN);
                 usuarioService.editar(tmp);
                 ctx.redirect("/ListarUsuarios");
@@ -184,7 +188,8 @@ public class ApiControladora {
             //guardar editar usuario ROL NORMAL
             app.post("/descender/:idUsuario", ctx -> {
                 //obtengo el usuario
-                Usuario tmp = usuarioService.find(ctx.pathParam("idUsuario", Integer.class).get());
+                //Usuario tmp = usuarioService.find(ctx.pathParam("idUsuario", Integer.class).get());
+                Usuario tmp = usuarioService.find(Integer.parseInt(ctx.pathParam("idUsuario")));
                 tmp.setRol(Usuario.TipoRole.ROLE_USUARIO);
                 usuarioService.editar(tmp);
                 ctx.redirect("/ListarUsuarios");
@@ -193,7 +198,8 @@ public class ApiControladora {
             //eliminar usuario
             app.post("/eliminar/:idUsuario", ctx -> {
                 //obtengo el usuario
-                int id =ctx.pathParam("idUsuario", Integer.class).get();
+                //int id =ctx.pathParam("idUsuario", Integer.class).get();
+                int id = Integer.parseInt(ctx.pathParam("idUsuario"));
                 usuarioService.eliminar(id);
                 ctx.redirect("/ListarUsuarios");
             });
@@ -259,7 +265,8 @@ public class ApiControladora {
             //eliminar enlace
             app.post("/eliminar/enlace/:id", ctx -> {
                 //obtenemos los valores del session
-                int id =ctx.pathParam("id", Integer.class).get();
+                //int id =ctx.pathParam("id", Integer.class).get();
+                int id = Integer.parseInt(ctx.pathParam("id"));
                 Boolean estado = urlService.eliminar(id);
 
                 if(estado)

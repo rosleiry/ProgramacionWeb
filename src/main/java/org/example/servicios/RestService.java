@@ -1,7 +1,13 @@
 package org.example.servicios;
 
+import org.example.controladoras.RestControladora;
 import org.example.encapsulaciones.LoginResponse;
-
+import org.example.encapsulaciones.Usuario;
+import org.example.servicios.UsuarioService;
+import org.example.servicios.UrlService;
+import org.example.exceptions.noExistingToken;
+import org.example.exceptions.noExistingUser;
+import org.example.exceptions.noExistingUrl;
 import io.javalin.Javalin;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -9,19 +15,17 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
-import org.example.controladoras.RestControladora;
-import org.example.encapsulaciones.Usuario;
-import org.example.exceptions.noExistingToken;
-import org.example.exceptions.noExistingUser;
 
 import javax.crypto.SecretKey;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Handler;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
-
 public class RestService {
     private Javalin app;
 
@@ -180,8 +184,7 @@ public class RestService {
         System.out.println("La fecha actual: "+localDateTime.toString());
 
         //
-        Date fechaExpiracion;
-        fechaExpiracion = Date.from(localDateTime.toInstant(ZoneOffset.ofHours(-4)));
+        Date fechaExpiracion = Date.from(localDateTime.toInstant(ZoneOffset.ofHours(-4)));
         // creando la trama.
         String jwt = Jwts.builder()
                 .setIssuer("PUCMM-ProgramacionWeb")
@@ -227,5 +230,4 @@ public class RestService {
         }
         return detalles;
     }
-
 }

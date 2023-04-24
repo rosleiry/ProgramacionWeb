@@ -2,9 +2,19 @@ package org.example.servicios;
 
 import org.example.encapsulaciones.Cliente;
 import org.example.encapsulaciones.Url;
+import org.example.servicios.UrlService;
+import org.example.exceptions.noExistingUrl;
+import org.example.servicios.UsuarioService;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import com.sun.tools.jconsole.JConsoleContext;
+import enlacern.EnlaceRnGrpc;
+import enlacern.EnlaceRnOuterClass;
+import io.grpc.stub.StreamObserver;
+
+import java.util.List;
 
 public class GrpcService {
 
@@ -19,7 +29,7 @@ public class GrpcService {
     }
     public void registrarEnlace(EnlaceRnOuterClass.EnlaceRequest request, StreamObserver<EnlaceRnOuterClass.EnlaceResponse> responseObserver){
         try {
-            Url aux = urlService.registrarEnlace(request.getUrl(),request.getUsuario());
+            Url aux = urlService.registrarEnlace(request.getEnlace(),request.getUsuario());
             responseObserver.onNext(convertir(aux));
             responseObserver.onCompleted();
         } catch (IOException e) {
@@ -29,15 +39,16 @@ public class GrpcService {
     }
 
     public void getEnlace(EnlaceRnOuterClass.clientesRequest request, StreamObserver<EnlaceRnOuterClass.EnlaceResponse> responseObserver){
-        Url enlace = urlService.find(request.getIdUrl());
+        Url enlace = urlService.find(request.getIdEnlace());
         if (enlace != null){
             responseObserver.onNext(convertir(enlace));
             responseObserver.onCompleted();
         }else{
-            responseObserver.onError(new noExisteEnlace("No existe el enlace: " + request.getIdUrl()));
+            responseObserver.onError(new noExistingUrl("No existe el enlace: " + request.getIdEnlace()));
 
         }
     }
+
     public void getEnlaces(EnlaceRnOuterClass.enlace request,StreamObserver<EnlaceRnOuterClass.ListaEnlace> responseObserver){
         Url[] enlaces = urlService.getEnlaces(request.getUser());
         List<EnlaceRnOuterClass.EnlaceResponse> enlaceResponses = new ArrayList<>();
@@ -49,7 +60,7 @@ public class GrpcService {
         responseObserver.onCompleted();
     }
     public void getClientes(EnlaceRnOuterClass.clientesRequest request, StreamObserver<EnlaceRnOuterClass.clienteReponse> responseObserver){
-        List<Cliente> clientes = enlaceService.find(request.getIdEnlace()).getClientes();
+        List<Cliente> clientes = urlService.find(request.getIdEnlace()).getClientes();
         List<EnlaceRnOuterClass.cliente> clientesRN = new ArrayList<>();
 
         for (Cliente e: clientes){

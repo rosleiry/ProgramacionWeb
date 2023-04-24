@@ -86,7 +86,7 @@ public class UrlService extends DatabaseService<Url>{
     }
 
 
-    public String getPreview(String url) {
+    public static String getPreview(String url) {
 
         String response = Unirest.get("https://api.microlink.io?url="+url+"&screenshot=true&meta=false")
                 .asJson().getBody().getObject().getJSONObject("data")
@@ -104,7 +104,7 @@ public class UrlService extends DatabaseService<Url>{
         return response;
     }
 
-    public String getAcortado() {
+    public static String getAcortado() {
         boolean res = false;
         String cod = "";
 
