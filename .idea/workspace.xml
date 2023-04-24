@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b450342d-da14-41ec-83fa-5159ba638f7f" name="Changes" comment="encapsulation">
+    <list default="true" id="b450342d-da14-41ec-83fa-5159ba638f7f" name="Changes" comment="actualizacion dependencias">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/servicios/ClienteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/servicios/ClienteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/servicios/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/servicios/DatabaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/servicios/UrlService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/servicios/UrlService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +79,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Tag Library Descriptor" />
         <option value="Class" />
+        <option value="Tag Library Descriptor" />
       </list>
     </option>
   </component>
@@ -112,7 +115,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Administrator/IdeaProjects/javalin-demo",
+    "last_opened_file_path": "C:/Users/Administrator/IdeaProjects/FinalAcortador/src/main/resources/META-INF",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -122,6 +125,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\IdeaProjects\FinalAcortador\src\main\resources\META-INF" />
       <recent name="C:\Users\Administrator\IdeaProjects\FinalAcortador\.idea" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -169,7 +173,7 @@
       <workItem from="1682204625102" duration="2850000" />
       <workItem from="1682230831013" duration="7229000" />
       <workItem from="1682239255827" duration="3252000" />
-      <workItem from="1682257610900" duration="14639000" />
+      <workItem from="1682257610900" duration="19888000" />
     </task>
     <task id="LOCAL-00001" summary="encapsulation">
       <created>1682283741374</created>
@@ -178,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682283741374</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="actualizacion dependencias">
+      <created>1682301677496</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682301677496</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,6 +220,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="encapsulation" />
-    <option name="LAST_COMMIT_MESSAGE" value="encapsulation" />
+    <MESSAGE value="actualizacion dependencias" />
+    <option name="LAST_COMMIT_MESSAGE" value="actualizacion dependencias" />
   </component>
 </project>
