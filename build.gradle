@@ -15,55 +15,55 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
 
     //framework
     implementation 'io.javalin:javalin:5.4.2'
-    implementation 'org.slf4j:slf4j-api:1.7.32' //implementacion de logging
-    implementation 'org.slf4j:slf4j-simple:1.7.32'
+    implementation 'org.slf4j:slf4j-api:2.0.5' //implementacion de logging
+    implementation 'org.slf4j:slf4j-simple:2.0.5'
 
     //DB
     implementation 'com.h2database:h2:2.1.214'
 
     //ORM
-    implementation 'org.hibernate:hibernate-core:5.6.3.Final'
-    implementation 'org.hibernate:hibernate-entitymanager:5.6.3.Final'
+    implementation 'org.hibernate:hibernate-core:6.1.7.Final'
+    implementation 'org.hibernate:hibernate-entitymanager:5.6.15.Final'
 
     //Template
     implementation 'org.apache.velocity:velocity-engine-core:2.3'
 
     //Manejo de encriptación
     implementation 'org.jasypt:jasypt:1.9.3'
-    implementation 'com.google.code.gson:gson:2.8.9' //serializacion y deserializacion
+    implementation 'com.google.code.gson:gson:2.10.1' //serializacion y deserializacion
 
     //JWT tokens
-    implementation 'io.jsonwebtoken:jjwt-api:0.11.2' //api publica
-    implementation 'io.jsonwebtoken:jjwt-impl:0.11.2' //implementacion de la api
-    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2' //integracion con jackson para serializar y deserealizar
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5' //api publica
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.5' //implementacion de la api
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5' //integracion con jackson para serializar y deserealizar
 
     //SOAP
     implementation group: 'org.jsoup', name: 'jsoup', version: '1.15.3'
     //libreria para SOAP de Jetty https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-http-spi
-    implementation group: 'org.eclipse.jetty', name: 'jetty-http-spi', version: '9.4.46.v20220331'
+    implementation group: 'org.eclipse.jetty', name: 'jetty-http-spi', version: '11.0.14'
     //incluyendo las librerias de javax.ee en java 11.
     //https://www.baeldung.com/java-soap-web-service
-    implementation "jakarta.xml.ws:jakarta.xml.ws-api:3.0.1"
-    implementation "com.sun.xml.ws:jaxws-rt:3.0.2" //conjunto de APIs Java para desarrollar servicios web basados en XML
-    implementation "com.sun.xml.ws:jaxws-ri:3.0.2"
-    implementation "org.glassfish.jaxb:jaxb-runtime:3.0.2"
+    implementation 'jakarta.xml.ws:jakarta.xml.ws-api:4.0.0'
+    implementation 'com.sun.xml.ws:jaxws-rt:4.0.1' //conjunto de APIs Java para desarrollar servicios web basados en XML
+    implementation 'com.sun.xml.ws:jaxws-ri:4.0.1'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.2'
     implementation 'javax.xml.ws:jaxws-api:2.3.1'
 
 
     //gRPc y Protobuf
-    implementation 'io.grpc:grpc-netty-shaded:1.39.0'
+    implementation 'io.grpc:grpc-netty-shaded:1.53.0'
     implementation 'io.grpc:grpc-protobuf:1.39.0'
     implementation 'io.grpc:grpc-stub:1.39.0'
     compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
-    implementation 'com.google.protobuf:protobuf-java:3.19.6'
+    implementation 'com.google.protobuf:protobuf-java:3.22.2'
 
     //Unirest
-    implementation 'com.konghq:unirest-java:3.11.09:standalone'
+    implementation 'com.konghq:unirest-java:3.14.2:standalone'
 }
 
 protobuf {

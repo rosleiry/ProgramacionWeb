@@ -1,45 +1,44 @@
 #parse("publico/header.vm")
 
-    <div class="card m-auto mt-4" style="max-width: 80%;">
+<div class="container mt-4">
+    <div class="card">
         <div class="card-header">
-            <form class="form"  id = "form" method="post" action="/acortarEnlace" >
+            <form class="form-inline" id="form" method="post" action="/acortarEnlace">
                 <div class="input-group">
-                    <label class="input-group-text" for="link">Enlace: </label>
-                    <input type="text" class="form-control" placeholder="Ingrese enlace" id="link" name="link" required>
-                    <input type="text" id = "fotoURL" name = "fotoURL" value="" hidden >
-                    <button id = "submit" class="btn btn-primary">Acortar</button>
+                    <label class="sr-only" for="link">Enlace:</label>
+                    <input type="text" class="form-control mr-2" placeholder="Ingrese enlace" id="link" name="link" required>
+                    <input type="text" id="fotoURL" name="fotoURL" value="" hidden>
+                    <button id="submit" class="btn btn-primary">Acortar</button>
                 </div>
             </form>
         </div>
     </div>
-    <div class="card m-auto mt-4" style="max-width: 80%;">
+
+    <div class="card mt-4">
         <div class="card-header">
             <h4 class="font-weight-normal text-center">Enlaces Acortados</h4>
-
         </div>
+        <div class="card-body">
 
             #foreach($link in $links)
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="data:image/png;base64,${link.getFotoBase64()}" class="img-fluid rounded-start">
-
+                            <img src="data:image/png;base64,${link.getImagen64()}" class="card-img-top">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <a href="https://$link.URLAcostarda">$link.URLAcostarda</a>
-                                <p>$link.URL</p>
-                                <a class="btn btn-primary" href="/ver/$link.idEnlace">Ver</a>
+                                <a href="https://$link.EnlaceAcortado" class="card-title">$link.EnlaceAcortado</a>
+                                <p class="card-text">$link.URL</p>
+                                <a class="btn btn-primary" href="/ver/$link.idUrl">Ver</a>
                             </div>
                         </div>
                     </div>
                 </div>
-
             #end
 
         </div>
-
     </div>
+</div>
 
 #parse("publico/footer.vm")
-

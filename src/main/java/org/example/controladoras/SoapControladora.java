@@ -4,6 +4,7 @@ import io.javalin.Javalin;
 import jakarta.xml.ws.spi.http.HttpContext;
 import org.eclipse.jetty.http.spi.HttpSpiContextHandler;
 import org.eclipse.jetty.http.spi.JettyHttpContext;
+//import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandlerCollection;
 import org.eclipse.jetty.http.spi.JettyHttpServer;
@@ -26,7 +27,7 @@ public class SoapControladora {
         server.setHandler(contextHandlerCollection);
 
         try {
-            HttpContext context = build(server, "/ws");
+            JettyHttpContext context = build(server, "/ws");
 
             SoapService userWS = new SoapService();
             Endpoint userEndPoint = javax.xml.ws.Endpoint.create(userWS);
@@ -38,7 +39,7 @@ public class SoapControladora {
 
     }
 
-    private HttpContext build(Server server, String contextString) throws Exception {
+    private JettyHttpContext build(Server server, String contextString) throws Exception {
         JettyHttpServer jettyHttpServer = new JettyHttpServer(server, true);
         JettyHttpContext ctx = (JettyHttpContext) jettyHttpServer.createContext(contextString);
         Method method = JettyHttpContext.class.getDeclaredMethod("getJettyContextHandler");

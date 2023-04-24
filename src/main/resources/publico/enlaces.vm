@@ -1,36 +1,42 @@
 #parse("publico/header.vm")
 
-<div class="card m-auto mt-3" style="max-width: 80%">
-    <div class="card-header">
-        <h4 class="font-weight-normal  text-center"> Lista de Enlaces </h4>
-    </div>
-    <div class="card-body">
-        <table class="table">
-            <thead>
-            <tr>
-                <th style="max-width: 50%">Original</th>
-                <th >Acortado</th>
-                <th >Total Visitas</th>
-                <th >Opciones</th>
-            </tr>
-            </thead>
-            <tbody>
-                #foreach($link in $links)
-                <tr>
-                    <td style="max-width: 50%">$link.URL</td>
-                    <td>$link.URLAcostarda</td>
-                    <td>$link.vecesAccesidas</td>
-                    <td><a class="btn btn-primary" href="/ver/$link.idEnlace">Ver</a>
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="font-weight-normal text-center">Lista de Enlaces</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col" style="width: 50%;">Original</th>
+                        <th scope="col">Acortado</th>
+                        <th scope="col">Total Visitas</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        #foreach($link in $links)
+                        <tr>
+                            <td>$link.URL</td>
+                            <td>$link.EnlaceAcortado/td>
+                            <td>$link.CantVecesAccedidas</td>
+                            <td>
+                                <a class="btn btn-primary" href="/ver/$link.idUrl">Ver</a>
 
-                    #if($usuario.rol == "ROLE_ADMIN")
-                        <form action="/eliminar/enlace/$link.idEnlace" method="post">
-                            <button class="btn btn-warning" type="submit">Eliminar Enlace</button></td>
-                        </form>
-                    #end
-                #end
-            </tr>
-            </tbody>
-        </table>
+                                #if($usuario.rol == "ROLE_ADMIN")
+                                    <form action="/eliminar/enlace/$link.idUrl" method="post" style="display: inline;">
+                                        <button class="btn btn-warning" type="submit">Eliminar Enlace</button>
+                                    </form>
+                                #end
+                            </td>
+                        </tr>
+                        #end
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
