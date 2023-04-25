@@ -12,6 +12,7 @@
 
     <properties>
       <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test" />-->
+      <property name="javax.persistence.logging.level" value="ALL"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/acortador" />
       <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
       <property name="javax.persistence.jdbc.user" value="admin" />

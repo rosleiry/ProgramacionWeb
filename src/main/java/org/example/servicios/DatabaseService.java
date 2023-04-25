@@ -19,47 +19,20 @@ public class DatabaseService<T> { //<T> clase generica y puede trabajar con cual
 
     public DatabaseService(Class<T> claseGenerica) {
         if(emf == null) {
-            if(Main.getModoConexion().equalsIgnoreCase("Heroku")){
-                emf = getConfiguracionBaseDatosHeroku();
-            }else{
-                emf = Persistence.createEntityManagerFactory("MiUnidadPersistencia");
-            }
+            emf = Persistence.createEntityManagerFactory("MiUnidadPersistencia");
         }
         this.claseGenerica = claseGenerica;
-
     }
 
-    public static EntityManager getEntityManager(){
+
+    public static EntityManager getEntityManager() {
+        if (emf == null) {
+            throw new IllegalStateException("EntityManagerFactory not initialized");
+        }
         return emf.createEntityManager();
     }
 
 
-    /**
-     * Configurar información de la conexión de Heroku.
-     * Tomado de https://gist.github.com/mlecoutre/4088178
-     * @return
-     */
-    private EntityManagerFactory getConfiguracionBaseDatosHeroku(){
-        //Leyendo la información de la variable de ambiente de Heroku
-        String databaseUrl = System.getenv("DATABASE_URL");
-        StringTokenizer st = new StringTokenizer(databaseUrl, ":@/");
-        //Separando las información del conexión.
-        String dbVendor = st.nextToken();
-        String userName = st.nextToken();
-        String password = st.nextToken();
-        String host = st.nextToken();
-        String port = st.nextToken();
-        String databaseName = st.nextToken();
-        //creando la jbdc String
-        String jdbcUrl = String.format("jdbc:postgresql://%s:%s/%s", host, port, databaseName);
-        //pasando las propiedades.
-        Map<String, String> properties = new HashMap<>();
-        properties.put("javax.persistence.jdbc.url", jdbcUrl );
-        properties.put("javax.persistence.jdbc.user", userName );
-        properties.put("javax.persistence.jdbc.password", password );
-        //
-        return Persistence.createEntityManagerFactory("Heroku", properties);
-    }
 
     /**
      * Metodo para obtener el valor del campo anotado como @ID.

@@ -4,7 +4,7 @@ from suds.client import Client
 
 user = 'anonimo'
 enlacesAnonimo = []    
-url = "http://localhost:7000/ws/SoapWebServiceService?wsdl"    
+url = "http://localhost:7000/ws/SoapServiceService?wsdl"
 cliente = Client(url)
 
 
