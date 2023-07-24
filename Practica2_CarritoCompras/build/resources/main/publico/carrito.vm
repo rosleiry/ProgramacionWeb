@@ -1,0 +1,60 @@
+#parse("publico/header.vm")
+
+<div class="container-fluid mb-4">
+    <div class="card text-center">
+        <div class="card-body">
+            <h3 class="text-center">Carrito de compra</h3>
+        </div>
+    </div>
+    <form action="/procesar" method="post">
+
+        <div class="container mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Datos del Cliente</h4>
+                </div>
+                <div class="card-body">
+                    <tag>Nombre del Cliente: </tag>
+                    <input id="nombre" name="nombre" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-3">
+            <div class="card">
+                <div class="container-fluid mb-3">
+                    <div>
+                        <table class="table table-bordered">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Precio($RD)</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">TOTAL</th> <!-- Agregar columna TOTAL -->
+                                <th scope="col">Acción</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                #foreach($producto in $productos)
+                                <tr>
+                                    <td>$producto.nombre</td>
+                                    <td>$producto.precio</td>
+                                    <td>$producto.cantidad</td>
+                                    <td>$producto.total()</td> <!-- Mostrar el resultado del precio * cantidad -->
+                                    <td><a href="/eliminar/$producto.getId()" class="btn btn-dark">Eliminar</a></td>
+                                </tr>
+                                #end
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="container-fluid d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary mr-3">Proceder</button>
+                        <button type="button" class="btn btn-secondary">Limpiar Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+#include("publico/footer.vm")
+
