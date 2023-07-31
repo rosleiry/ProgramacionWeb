@@ -1,0 +1,80 @@
+#parse("publico/header.vm")
+<div class="card m-auto" style="max-width: 80%; margin-top: 10px;">
+    <div class="row g-0">
+        <div id="carouselExampleControls" class="carousel slide mx-auto" data-bs-ride="carousel" style="width: 30%; height: 200px;">
+            <div class="carousel-inner">
+                #set ($cont = 0)
+                #foreach($imagen in $temp.imagenes)
+                    #if(${cont} == 0)
+                    <div class="carousel-item active">
+                    #else
+                    <div class="carousel-item">
+                    #end
+                    <img src="data:${imagen.getMimeType()};base64,${imagen.getImagenBase64()}" class="d-block" style="width: 100%; max-height: 250px;" alt="...">
+                </div>
+                    #set ($cont = $cont + 1 )
+                #end
+            </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="col-md-8 ml-5">
+                <div class="card-body">
+                    <h5 class="card-title">${temp.nombre}</h5>
+                    <p class="card-text h4">Precio ${temp.precio}</p>
+                    <p class="card-text h4 mt-4">Sobre este producto:</p>
+                    <p class="card-text h5 mb-4">${temp.desc}</p>
+                    <form action="/comprar" method="post">
+                        <div class="form-group">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                    <label for="cantidad" class="h5">Cantidad:</label>
+                                </div>
+                                <div class="col-auto">
+                                    <input class="form-control mb-2" type="number" id="cantidad" min="0" value="0" name="cantidad">
+                                    <input type="hidden" value="$temp.id" name="id">
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Agregar" style="color: black; background-color: white;">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form method="post" action="/addComment/${temp.id}">
+        <div class="card mt-2 m-auto" style="max-width: 80%; margin-top: 20px;">
+            <div class="form-floating" style="margin-top">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="coment" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Comments</label>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Agregar Comentario" style="color: black; background-color: white;">
+        </div>
+    </form>
+
+    #foreach($coment in $comments)
+        <div class="card m-auto mt-2" style="max-width: 80%; margin-top: 20px;">
+            <div class="card-header">
+                <h5>Anonimo</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-2 align-items-center">
+                    <div class="col-auto">
+                        <h6>${coment.comentario}</h6>
+                    </div>
+                    #if($user == "admin")
+                        <div class="col-auto" style="margin-left: 80%;">
+                            <a href="/delComent/$temp.id/$coment.id" class="btn btn-danger">Eliminar</a>
+                        </div>
+                    #end
+                </div>
+            </div>
+        </div>
+    #end
+
+    #include("publico/footer.vm")

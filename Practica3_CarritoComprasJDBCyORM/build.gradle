@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+mainClassName = 'org.example.util.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    //Dependencia de Javalin
+    implementation 'io.javalin:javalin:5.6.1'
+
+    //plantilla
+    implementation 'io.javalin:javalin-rendering:5.3.2'
+    implementation 'org.apache.velocity:velocity-engine-core:2.3'
+
+    //manejo de log.
+    implementation 'org.slf4j:slf4j-simple:2.0.7'
+
+    implementation 'org.jasypt:jasypt:1.9.3'
+
+    // Dependencias de Hibernate
+    implementation 'org.hibernate:hibernate-core:6.0.0.Final'
+
+    // Dependencia de H2 Database
+    implementation 'com.h2database:h2:2.1.212'
+    implementation 'org.postgresql:postgresql:42.3.6'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+run {
+    standardInput = System.in
+}
